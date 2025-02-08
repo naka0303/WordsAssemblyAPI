@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wordsassemblyapi.mapper.novel.NovelCommandMapper">
+  <insert id="insertNovel">
+    INSERT INTO novels (
+      title
+      , author_id
+      , contents
+      , is_publish
+    ) VALUES (
+      #{dto.getTitle()}
+      , #{dto.getAuthorId()}
+      , #{dto.getContents()}
+      , #{dto.getIsPublish()}
+    )
+  </insert>
+</mapper>

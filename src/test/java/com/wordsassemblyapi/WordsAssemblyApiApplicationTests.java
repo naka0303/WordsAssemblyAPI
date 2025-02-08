@@ -1,4 +1,4 @@
-package com.wordssassemblyapi;
+package com.wordsassemblyapi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

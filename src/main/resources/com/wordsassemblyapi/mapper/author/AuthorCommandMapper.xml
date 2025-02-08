@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wordsassemblyapi.mapper.author.AuthorCommandMapper">
+  <insert id="insertAuthor">
+    INSERT INTO authors (
+      first_name
+      , last_name
+      , first_name_kana
+      , last_name_kana
+      , nickname
+      , age
+    ) VALUES (
+      #{dto.getFirstName()}
+      , #{dto.getLastName()}
+      , #{dto.getFirstNameKana()}
+      , #{dto.getLastNameKana()}
+      , #{dto.getNickName()}
+    )
+  </insert>
+</mapper>
