@@ -8,10 +8,10 @@
       , contents
       , is_publish
     ) VALUES (
-      #{dto.getTitle()}
-      , #{dto.getAuthorId()}
-      , #{dto.getContents()}
-      , #{dto.getIsPublish()}
+      #{dto.title}
+      , #{dto.authorId}
+      , #{dto.contents}
+      , #{dto.isPublish}
     )
   </insert>
 </mapper>

@@ -9,12 +9,17 @@
       , last_name_kana
       , nickname
       , age
+      , email
+      , password
     ) VALUES (
-      #{dto.getFirstName()}
-      , #{dto.getLastName()}
-      , #{dto.getFirstNameKana()}
-      , #{dto.getLastNameKana()}
-      , #{dto.getNickName()}
+      #{dto.firstName}
+      , #{dto.lastName}
+      , #{dto.firstNameKana}
+      , #{dto.lastNameKana}
+      , #{dto.nickname}
+      , #{dto.age}
+      , #{dto.email}
+      , #{dto.password}
     )
   </insert>
 </mapper>

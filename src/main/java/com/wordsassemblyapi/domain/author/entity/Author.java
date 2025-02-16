@@ -30,6 +30,12 @@ public class Author {
   @Column
   final private Integer age;
 
+  @Column
+  final private String email;
+
+  @Column
+  final private String password;
+
   /** コンストラクタ */
   public Author(
       Integer id,
@@ -38,7 +44,9 @@ public class Author {
       String firstNameKana,
       String lastNameKana,
       String nickname,
-      Integer age) {
+      Integer age,
+      String email,
+      String password) {
     this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
@@ -46,5 +54,7 @@ public class Author {
     this.lastNameKana = lastNameKana;
     this.nickname = nickname;
     this.age = age;
+    this.email = email;
+    this.password = password;
   }
 }
