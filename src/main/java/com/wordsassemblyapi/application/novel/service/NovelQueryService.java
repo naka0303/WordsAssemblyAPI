@@ -19,7 +19,7 @@ public class NovelQueryService {
   }
 
   /**
-   * 指定された著者に紐づく投稿済みの小説を全取得.
+   * 指定された著者に紐づく小説を全取得.
    * @param authorId 著者ID
    * @param request 検索条件
    */

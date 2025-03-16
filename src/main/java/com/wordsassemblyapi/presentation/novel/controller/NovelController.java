@@ -11,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Objects;
 
@@ -52,14 +51,14 @@ public class NovelController {
   }
 
   /**
-   * 指定された著者に紐づく投稿済みの小説を全取得します.
+   * 指定された著者に紐づく小説を全取得.
    * @param authorId 著者ID
    * @param request 投稿済み小説情報
    */
   @GetMapping("/v1/authors/{authorId}/novels")
   public ResponseEntity<Object> findNovelsByAuthor(
       @PathVariable Integer authorId,
-      @RequestParam @Validated FindNovelRequest request,
+      @ModelAttribute @Validated FindNovelRequest request,
       Errors errors) throws Exception {
 
     if (errors.hasErrors()) {

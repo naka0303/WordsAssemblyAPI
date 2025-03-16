@@ -5,6 +5,8 @@ import com.wordsassemblyapi.infrastructure.novel.dto.FindNovelDto;
 import com.wordsassemblyapi.mapper.novel.NovelQueryMapper;
 import com.wordsassemblyapi.presentation.novel.dto.FindNovelRequest;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.CollectionUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +21,7 @@ public class NovelQueryRepository {
   }
 
   /**
-   * 指定された著者に紐づく投稿済みの小説を全取得.
+   * 指定された著者に紐づく小説を全取得.
    * @param authorId 著者ID
    * @param request 検索条件
    */
@@ -27,7 +29,7 @@ public class NovelQueryRepository {
     List<FindNovelData> dataList =
         novelQueryMapper.selectNovelsByAuthor(authorId, request.getIsPublish());
 
-    if (dataList.isEmpty()) {
+    if (CollectionUtils.isEmpty(dataList)) {
       return null;
     }
 

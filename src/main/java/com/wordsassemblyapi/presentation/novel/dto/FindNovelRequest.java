@@ -1,15 +1,11 @@
 package com.wordsassemblyapi.presentation.novel.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.*;
 
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
+@Setter
 public class FindNovelRequest {
 
   @NonNull
-  private Boolean isPublish;
+  private String isPublish;
 }

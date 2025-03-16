@@ -11,7 +11,7 @@ public class FindNovelData {
   private String title;
   private Integer authorId;
   private String contents;
-  private Boolean isPublish;
+  private String isPublish;
   private LocalDateTime createdAt;
   private LocalDateTime updatedAt;
   private LocalDateTime deletedAt;

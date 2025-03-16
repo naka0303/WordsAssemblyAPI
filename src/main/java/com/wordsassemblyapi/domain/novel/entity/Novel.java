@@ -23,7 +23,7 @@ public class Novel {
   final private String contents;
 
   @Column(nullable = false)
-  final private Boolean isPublish;
+  final private String isPublish;
 
   @Column
   final private LocalDateTime createdAt;
@@ -40,7 +40,7 @@ public class Novel {
       String title,
       Integer authorId,
       String contents,
-      Boolean isPublish,
+      String isPublish,
       LocalDateTime createdAt,
       LocalDateTime updatedAt,
       LocalDateTime deletedAt) {

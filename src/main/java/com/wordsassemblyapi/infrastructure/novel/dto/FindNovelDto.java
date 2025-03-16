@@ -12,7 +12,7 @@ public class FindNovelDto {
   private String title;
   private Integer authorId;
   private String contents;
-  private Boolean isPublish;
+  private String isPublish;
   private LocalDateTime createdAt;
   private LocalDateTime updatedAt;
   private LocalDateTime deletedAt;
@@ -23,7 +23,7 @@ public class FindNovelDto {
       String title,
       Integer authorId,
       String contents,
-      Boolean isPublish,
+      String isPublish,
       LocalDateTime createdAt,
       LocalDateTime updatedAt,
       LocalDateTime deletedAt) {

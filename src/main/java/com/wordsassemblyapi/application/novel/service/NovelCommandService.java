@@ -22,8 +22,9 @@ public class NovelCommandService {
   public void registerNovel(RegisterNovelRequest request) throws Exception {
 
     RegisterNovelDto dto = new RegisterNovelDto(
-        request.getTitle(),
         request.getAuthorId(),
+        request.getTitle(),
+        request.getDigest(),
         request.getContents(),
         request.getIsPublish());
 

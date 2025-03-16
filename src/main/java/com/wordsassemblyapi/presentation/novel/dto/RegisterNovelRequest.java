@@ -10,6 +10,12 @@ import lombok.NoArgsConstructor;
 public class RegisterNovelRequest {
   private Integer authorId;
   private String title;
+  private String digest;
   private String contents;
-  private Boolean isPublish;
+
+  /**
+   * 投稿されているかどうか
+   * true: 投稿済み false: 下書き保存
+   */
+  private String isPublish;
 }

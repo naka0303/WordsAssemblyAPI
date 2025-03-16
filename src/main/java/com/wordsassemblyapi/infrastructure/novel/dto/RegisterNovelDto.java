@@ -6,19 +6,22 @@ import lombok.Setter;
 @Getter
 @Setter
 public class RegisterNovelDto {
-  private String title;
   private Integer authorId;
+  private String title;
+  private String digest;
   private String contents;
-  private Boolean isPublish;
+  private String isPublish;
 
   /** コンストラクター */
   public RegisterNovelDto(
-      String title,
       Integer authorId,
+      String title,
+      String digest,
       String contents,
-      Boolean isPublish) {
-    this.title = title;
+      String isPublish) {
     this.authorId = authorId;
+    this.title = title;
+    this.digest = digest;
     this.contents = contents;
     this.isPublish = isPublish;
   }

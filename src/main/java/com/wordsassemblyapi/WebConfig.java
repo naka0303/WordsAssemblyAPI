@@ -22,6 +22,8 @@ public class WebConfig implements WebMvcConfigurer {
             .requestMatchers(HttpMethod.POST, "/v1/login").permitAll()
             .requestMatchers(HttpMethod.POST, "/v1/logout").permitAll()
             .requestMatchers(HttpMethod.POST, "/v1/authors").permitAll()
+            .requestMatchers(HttpMethod.POST, "/v1/novels").permitAll()
+            .requestMatchers(HttpMethod.GET, "/v1/authors/{authorId}/novels").permitAll()
             .anyRequest().authenticated());
 
     return http.build();
