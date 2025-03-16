@@ -1,35 +1,45 @@
 package com.wordsassemblyapi.presentation.novel.controller;
 
-import com.wordsassemblyapi.presentation.novel.dto.NovelRegisterRequest;
+import com.wordsassemblyapi.application.novel.service.NovelQueryService;
+import com.wordsassemblyapi.domain.novel.entity.Novel;
+import com.wordsassemblyapi.presentation.novel.dto.FindNovelRequest;
 import com.wordsassemblyapi.application.novel.service.NovelCommandService;
+import com.wordsassemblyapi.presentation.novel.dto.RegisterNovelRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 import java.util.Objects;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*")
 public class NovelController {
 
   @Autowired
   private final NovelCommandService novelCommandService;
 
+  @Autowired
+  private final NovelQueryService novelQueryService;
+
+
   public NovelController (
-      NovelCommandService novelCommandService) {
+      NovelCommandService novelCommandService,
+      NovelQueryService novelQueryService) {
     this.novelCommandService = novelCommandService;
+    this.novelQueryService = novelQueryService;
   }
 
   /**
    * 小説の新規登録
    * @param request 登録情報
    */
-  @PostMapping("/novels")
+  @PostMapping("/v1/novels")
   public ResponseEntity<Object> registerNovel(
-      @RequestBody @Validated NovelRegisterRequest request,
+      @RequestBody @Validated RegisterNovelRequest request,
       Errors errors) throws Exception {
 
     if (errors.hasErrors()) {
@@ -39,6 +49,26 @@ public class NovelController {
     novelCommandService.registerNovel(request);
 
     return ResponseEntity.status(HttpStatus.OK).body(Objects.class);
+  }
+
+  /**
+   * 指定された著者に紐づく投稿済みの小説を全取得します.
+   * @param authorId 著者ID
+   * @param request 投稿済み小説情報
+   */
+  @GetMapping("/v1/authors/{authorId}/novels")
+  public ResponseEntity<Object> findNovelsByAuthor(
+      @PathVariable Integer authorId,
+      @RequestParam @Validated FindNovelRequest request,
+      Errors errors) throws Exception {
+
+    if (errors.hasErrors()) {
+      throw new Exception("Invalid Request");
+    }
+
+    List<Novel> novels = novelQueryService.findNovelsByAuthor(authorId, request);
+
+    return ResponseEntity.ok(novels);
   }
 
 }

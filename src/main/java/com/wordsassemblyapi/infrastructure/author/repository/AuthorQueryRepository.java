@@ -30,7 +30,7 @@ public class AuthorQueryRepository {
       return null;
     }
 
-    return new FindAuthorDto(data.getFirstName(), data.getLastName(), data.getFirstNameKana(),
+    return new FindAuthorDto(data.getId(), data.getFirstName(), data.getLastName(), data.getFirstNameKana(),
         data.getLastNameKana(), data.getNickname(), data.getAge(), data.getEmail(), data.getPassword(),
         data.getCreatedAt(), data.getUpdatedAt(), data.getDeletedAt());
   }

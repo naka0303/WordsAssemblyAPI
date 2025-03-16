@@ -3,6 +3,8 @@ package com.wordsassemblyapi.domain.author.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Entity
 @Table(name = "authors")
@@ -36,6 +38,15 @@ public class Author {
   @Column
   final private String password;
 
+  @Column
+  final private LocalDateTime createdAt;
+
+  @Column
+  final private LocalDateTime updatedAt;
+
+  @Column
+  final private LocalDateTime deletedAt;
+
   /** コンストラクタ */
   public Author(
       Integer id,
@@ -46,7 +57,10 @@ public class Author {
       String nickname,
       Integer age,
       String email,
-      String password) {
+      String password,
+      LocalDateTime createdAt,
+      LocalDateTime updatedAt,
+      LocalDateTime deletedAt) {
     this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
@@ -56,5 +70,8 @@ public class Author {
     this.age = age;
     this.email = email;
     this.password = password;
+    this.createdAt = createdAt;
+    this.updatedAt = updatedAt;
+    this.deletedAt = deletedAt;
   }
 }

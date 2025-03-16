@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class FindAuthorData {
+  private Integer id;
   private String firstName;
   private String lastName;
   private String firstNameKana;

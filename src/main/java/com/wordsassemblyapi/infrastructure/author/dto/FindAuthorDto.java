@@ -1,5 +1,6 @@
 package com.wordsassemblyapi.infrastructure.author.dto;
 
+import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.Getter;
 import lombok.Setter;
 import java.time.LocalDateTime;
@@ -7,6 +8,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class FindAuthorDto {
+  private Integer id;
   private String firstName;
   private String lastName;
   private String firstNameKana;
@@ -21,6 +23,7 @@ public class FindAuthorDto {
 
   /** コンストラクター */
   public FindAuthorDto(
+      Integer id,
       String firstName,
       String lastName,
       String firstNameKana,
@@ -32,6 +35,7 @@ public class FindAuthorDto {
       LocalDateTime createdAt,
       LocalDateTime updatedAt,
       LocalDateTime deletedAt) {
+    this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
     this.firstNameKana = firstNameKana;

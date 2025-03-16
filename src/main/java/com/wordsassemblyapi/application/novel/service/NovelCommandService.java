@@ -1,8 +1,8 @@
 package com.wordsassemblyapi.application.novel.service;
 
 import com.wordsassemblyapi.infrastructure.novel.dto.RegisterNovelDto;
-import com.wordsassemblyapi.presentation.novel.dto.NovelRegisterRequest;
 import com.wordsassemblyapi.infrastructure.novel.repository.NovelCommandRepository;
+import com.wordsassemblyapi.presentation.novel.dto.RegisterNovelRequest;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,7 +19,7 @@ public class NovelCommandService {
    * @param request 登録内容
    * @throws Exception 例外処理
    */
-  public void registerNovel(NovelRegisterRequest request) throws Exception {
+  public void registerNovel(RegisterNovelRequest request) throws Exception {
 
     RegisterNovelDto dto = new RegisterNovelDto(
         request.getTitle(),

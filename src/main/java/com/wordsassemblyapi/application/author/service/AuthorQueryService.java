@@ -1,7 +1,10 @@
 package com.wordsassemblyapi.application.author.service;
 
+import com.wordsassemblyapi.domain.author.entity.Author;
 import com.wordsassemblyapi.infrastructure.author.dto.FindAuthorDto;
 import com.wordsassemblyapi.infrastructure.author.repository.AuthorQueryRepository;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,12 +18,15 @@ public class AuthorQueryService {
   }
 
   /**
-   * 著者の詳細情報取得
+   * 著者の詳細情報取得.
    *
    * @param email メールアドレス
    * @return 著者情報
    */
-  public FindAuthorDto findAuthorByEmail(String email) {
-    return authorQueryRepository.findAuthorByEmail(email);
+  public Author findAuthorByEmail(String email) {
+    FindAuthorDto dto = authorQueryRepository.findAuthorByEmail(email);
+
+    FindAuthorResource resource = new FindAuthorResource();
+    return resource.toEntity(dto);
   }
 }

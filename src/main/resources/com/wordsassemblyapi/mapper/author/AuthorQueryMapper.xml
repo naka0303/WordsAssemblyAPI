@@ -3,7 +3,7 @@
 <mapper namespace="com.wordsassemblyapi.mapper.author.AuthorQueryMapper">
   <select id="selectAuthorByEmail" resultType="com.wordsassemblyapi.infrastructure.author.dto.FindAuthorData">
     SELECT
-      id
+      a.id
       , a.first_name firstName
       , a.last_name lastName
       , a.first_name_kana firstNameKana

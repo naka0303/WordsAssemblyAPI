@@ -2,7 +2,7 @@ package com.wordsassemblyapi.presentation.login.controller;
 
 import com.wordsassemblyapi.application.author.service.AuthorQueryService;
 import com.wordsassemblyapi.application.login.service.LoginCommandService;
-import com.wordsassemblyapi.infrastructure.author.dto.FindAuthorDto;
+import com.wordsassemblyapi.domain.author.entity.Author;
 import com.wordsassemblyapi.presentation.login.dto.LoginRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -47,21 +47,21 @@ public class LoginController {
       throw new Exception("Invalid Request");
     }
 
-    BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-    FindAuthorDto dto = authorQueryService.findAuthorByEmail(request.getEmail());
+    Author author = authorQueryService.findAuthorByEmail(request.getEmail());
 
     Map<String, String> response = new HashMap<>();
-    if (dto == null) {
+
+    if (author == null) {
       response.put("message", "user.not.found");
       return ResponseEntity.badRequest().body(response);
     }
 
-    if (!passwordEncoder.matches(request.getPassword(), dto.getPassword())) {
+    BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    if (!passwordEncoder.matches(request.getPassword(), author.getPassword())) {
       response.put("message", "password.is.not.match");
       return ResponseEntity.badRequest().body(response);
     }
 
-    response.put("message", "success");
-    return ResponseEntity.ok(response);
+    return ResponseEntity.ok(author);
   }
 }
