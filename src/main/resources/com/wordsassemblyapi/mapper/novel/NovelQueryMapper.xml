@@ -4,8 +4,9 @@
   <select id="selectNovelsByAuthor" resultType="com.wordsassemblyapi.infrastructure.novel.dto.FindNovelData">
     SELECT
       n.id
-      , n.title
       , n.author_id authorId
+      , n.title
+      , n.digest
       , n.contents
       , n.is_publish isPublish
       , n.created_at createdAt
@@ -17,5 +18,24 @@
       n.author_id = #{authorId}
     AND
       n.is_publish = #{isPublish}
+  </select>
+
+  <select id="selectNovelById" resultType="com.wordsassemblyapi.infrastructure.novel.dto.FindNovelData">
+    SELECT
+      n.id
+      , n.author_id authorId
+      , n.title
+      , n.digest
+      , n.contents
+      , n.is_publish isPublish
+      , n.created_at createdAt
+      , n.updated_at updatedAt
+      , n.deleted_at deletedAt
+    FROM
+      novels n
+    WHERE
+      n.author_id = #{authorId}
+    AND
+      n.id = #{novelId}
   </select>
 </mapper>

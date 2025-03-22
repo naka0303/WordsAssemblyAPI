@@ -9,8 +9,9 @@ import java.time.LocalDateTime;
 @Setter
 public class FindNovelDto {
   private Integer id;
-  private String title;
   private Integer authorId;
+  private String title;
+  private String digest;
   private String contents;
   private String isPublish;
   private LocalDateTime createdAt;
@@ -20,16 +21,18 @@ public class FindNovelDto {
   /** コンストラクター */
   public FindNovelDto(
       Integer id,
-      String title,
       Integer authorId,
+      String title,
+      String digest,
       String contents,
       String isPublish,
       LocalDateTime createdAt,
       LocalDateTime updatedAt,
       LocalDateTime deletedAt) {
     this.id = id;
-    this.title = title;
     this.authorId = authorId;
+    this.title = title;
+    this.digest = digest;
     this.contents = contents;
     this.isPublish = isPublish;
     this.createdAt = createdAt;

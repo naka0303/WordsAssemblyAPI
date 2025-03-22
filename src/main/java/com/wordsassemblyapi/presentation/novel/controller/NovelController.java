@@ -70,4 +70,19 @@ public class NovelController {
     return ResponseEntity.ok(novels);
   }
 
+  /**
+   * 指定されたIDの小説を取得.
+   * @param authorId 著者ID
+   * @param novelId 小説ID
+   */
+  @GetMapping("/v1/authors/{authorId}/novels/{novelId}")
+  public ResponseEntity<Object> findNovelsById(
+      @PathVariable Integer authorId,
+      @PathVariable Integer novelId) {
+
+    Novel novel = novelQueryService.findNovelsById(authorId, novelId);
+
+    return ResponseEntity.ok(novel);
+  }
+
 }

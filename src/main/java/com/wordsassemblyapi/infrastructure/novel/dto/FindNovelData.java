@@ -8,8 +8,9 @@ import java.time.LocalDateTime;
 @Setter
 public class FindNovelData {
   private Integer id;
-  private String title;
   private Integer authorId;
+  private String title;
+  private String digest;
   private String contents;
   private String isPublish;
   private LocalDateTime createdAt;

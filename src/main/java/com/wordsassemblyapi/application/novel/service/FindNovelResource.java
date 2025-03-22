@@ -21,18 +21,41 @@ public class FindNovelResource {
     List<Novel> novels = new ArrayList<>();
     for (FindNovelDto dto : dtoList) {
       novels.add(new Novel(
-         dto.getId(),
-         dto.getTitle(),
-         dto.getAuthorId(),
-         dto.getContents(),
-         dto.getIsPublish(),
-         dto.getCreatedAt(),
-         dto.getUpdatedAt(),
-         dto.getDeletedAt()
+          dto.getId(),
+          dto.getAuthorId(),
+          dto.getTitle(),
+          dto.getDigest(),
+          dto.getContents(),
+          dto.getIsPublish(),
+          dto.getCreatedAt(),
+          dto.getUpdatedAt(),
+          dto.getDeletedAt()
       ));
     }
 
     return novels;
   }
 
+  /**
+   * DTO -> Entity変換.
+   * @param dto 小説DTO
+   * @return 小説エンティティ
+   */
+  public Novel toEntity(FindNovelDto dto) {
+    if (dto == null) {
+      return null;
+    }
+
+    return new Novel(
+        dto.getId(),
+        dto.getAuthorId(),
+        dto.getTitle(),
+        dto.getDigest(),
+        dto.getContents(),
+        dto.getIsPublish(),
+        dto.getCreatedAt(),
+        dto.getUpdatedAt(),
+        dto.getDeletedAt()
+    );
+  }
 }

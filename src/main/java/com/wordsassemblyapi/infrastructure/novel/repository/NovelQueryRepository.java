@@ -36,9 +36,27 @@ public class NovelQueryRepository {
     List<FindNovelDto> dtoList = new ArrayList<>();
     for (FindNovelData data : dataList) {
       dtoList.add(new FindNovelDto(
-          data.getId(), data.getTitle(), data.getAuthorId(), data.getContents(),
+          data.getId(), data.getAuthorId(), data.getTitle(), data.getDigest(), data.getContents(),
           data.getIsPublish(), data.getCreatedAt(), data.getUpdatedAt(), data.getDeletedAt()));
     }
     return dtoList;
+  }
+
+  /**
+   * 指定されたIDの小説を取得.
+   * @param authorId 著者ID
+   * @param novelId 小説ID
+   * @return 小説エンティティ
+   */
+  public FindNovelDto findNovelById(Integer authorId, Integer novelId) {
+    FindNovelData data = novelQueryMapper.selectNovelById(authorId, novelId);
+
+    if (data == null) {
+      return null;
+    }
+
+    return new FindNovelDto(
+        data.getId(), data.getAuthorId(), data.getTitle(), data.getDigest(), data.getContents(),
+        data.getIsPublish(), data.getCreatedAt(), data.getUpdatedAt(), data.getDeletedAt());
   }
 }
