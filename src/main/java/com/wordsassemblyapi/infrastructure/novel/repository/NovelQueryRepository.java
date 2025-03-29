@@ -1,12 +1,12 @@
 package com.wordsassemblyapi.infrastructure.novel.repository;
 
+import com.wordsassemblyapi.domain.novel.enums.Category;
 import com.wordsassemblyapi.infrastructure.novel.dto.FindNovelData;
 import com.wordsassemblyapi.infrastructure.novel.dto.FindNovelDto;
 import com.wordsassemblyapi.mapper.novel.NovelQueryMapper;
 import com.wordsassemblyapi.presentation.novel.dto.FindNovelRequest;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.CollectionUtils;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,8 +36,8 @@ public class NovelQueryRepository {
     List<FindNovelDto> dtoList = new ArrayList<>();
     for (FindNovelData data : dataList) {
       dtoList.add(new FindNovelDto(
-          data.getId(), data.getAuthorId(), data.getTitle(), data.getDigest(), data.getContents(),
-          data.getIsPublish(), data.getCreatedAt(), data.getUpdatedAt(), data.getDeletedAt()));
+          data.getId(), data.getAuthorId(), data.getTitle(), data.getCategory(), data.getDigest(),
+          data.getContents(), data.getIsPublish(), data.getCreatedAt(), data.getUpdatedAt(), data.getDeletedAt()));
     }
     return dtoList;
   }
@@ -50,7 +50,7 @@ public class NovelQueryRepository {
    */
   public List<FindNovelDto> findNovelsByAuthor(Integer authorId, FindNovelRequest request) {
     List<FindNovelData> dataList =
-        novelQueryMapper.selectNovelsByAuthor(authorId, request.getIsPublish());
+        novelQueryMapper.selectNovelsByAuthor(authorId);
 
     if (CollectionUtils.isEmpty(dataList)) {
       return null;
@@ -59,8 +59,8 @@ public class NovelQueryRepository {
     List<FindNovelDto> dtoList = new ArrayList<>();
     for (FindNovelData data : dataList) {
       dtoList.add(new FindNovelDto(
-          data.getId(), data.getAuthorId(), data.getTitle(), data.getDigest(), data.getContents(),
-          data.getIsPublish(), data.getCreatedAt(), data.getUpdatedAt(), data.getDeletedAt()));
+          data.getId(), data.getAuthorId(), data.getTitle(), data.getCategory(), data.getDigest(),
+          data.getContents(), data.getIsPublish(), data.getCreatedAt(), data.getUpdatedAt(), data.getDeletedAt()));
     }
     return dtoList;
   }
@@ -78,7 +78,7 @@ public class NovelQueryRepository {
     }
 
     return new FindNovelDto(
-        data.getId(), data.getAuthorId(), data.getTitle(), data.getDigest(), data.getContents(),
-        data.getIsPublish(), data.getCreatedAt(), data.getUpdatedAt(), data.getDeletedAt());
+        data.getId(), data.getAuthorId(), data.getTitle(), data.getCategory(), data.getDigest(),
+        data.getContents(), data.getIsPublish(), data.getCreatedAt(), data.getUpdatedAt(), data.getDeletedAt());
   }
 }

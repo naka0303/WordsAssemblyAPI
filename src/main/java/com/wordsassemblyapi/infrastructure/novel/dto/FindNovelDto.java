@@ -1,5 +1,6 @@
 package com.wordsassemblyapi.infrastructure.novel.dto;
 
+import com.wordsassemblyapi.domain.novel.enums.Category;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,6 +12,7 @@ public class FindNovelDto {
   private Integer id;
   private Integer authorId;
   private String title;
+  private String category;
   private String digest;
   private String contents;
   private String isPublish;
@@ -23,6 +25,7 @@ public class FindNovelDto {
       Integer id,
       Integer authorId,
       String title,
+      String category,
       String digest,
       String contents,
       String isPublish,
@@ -32,6 +35,7 @@ public class FindNovelDto {
     this.id = id;
     this.authorId = authorId;
     this.title = title;
+    this.category = category;
     this.digest = digest;
     this.contents = contents;
     this.isPublish = isPublish;

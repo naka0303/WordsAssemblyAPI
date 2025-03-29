@@ -1,5 +1,6 @@
 package com.wordsassemblyapi.application.novel.service;
 
+import com.wordsassemblyapi.domain.novel.enums.Category;
 import com.wordsassemblyapi.infrastructure.novel.dto.FindNovelDto;
 import com.wordsassemblyapi.infrastructure.novel.dto.RegisterNovelDto;
 import com.wordsassemblyapi.infrastructure.novel.repository.NovelCommandRepository;
@@ -30,6 +31,7 @@ public class NovelCommandService {
 
     RegisterNovelDto dto = new RegisterNovelDto(
         request.getAuthorId(),
+        Category.getEnum(request.getCategory()),
         request.getTitle(),
         request.getDigest(),
         request.getContents(),

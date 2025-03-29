@@ -10,6 +10,7 @@ public class FindNovelData {
   private Integer id;
   private Integer authorId;
   private String title;
+  private String category;
   private String digest;
   private String contents;
   private String isPublish;

@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class RegisterNovelRequest {
   private Integer authorId;
+  private String category;
   private String title;
   private String digest;
   private String contents;

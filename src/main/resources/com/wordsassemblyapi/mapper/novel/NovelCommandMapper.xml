@@ -4,12 +4,14 @@
   <insert id="insertNovel">
     INSERT INTO novels (
       author_id
+      , category
       , title
       , digest
       , contents
       , is_publish
     ) VALUES (
       #{dto.authorId}
+      , #{dto.category}
       , #{dto.title}
       , #{dto.digest}
       , #{dto.contents}

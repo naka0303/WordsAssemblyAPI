@@ -12,8 +12,7 @@ public interface NovelQueryMapper {
       @Param("isPublish") String isPublish);
 
   List<FindNovelData> selectNovelsByAuthor(
-      @Param("authorId") Integer authorId,
-      @Param("isPublish") String isPublish);
+      @Param("authorId") Integer authorId);
 
   FindNovelData selectNovelById(
       @Param("novelId") Integer novelId);

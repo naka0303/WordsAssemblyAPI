@@ -6,6 +6,7 @@
       n.id
       , n.author_id authorId
       , n.title
+      , n.category
       , n.digest
       , n.contents
       , n.is_publish isPublish
@@ -23,6 +24,7 @@
       n.id
       , n.author_id authorId
       , n.title
+      , n.category
       , n.digest
       , n.contents
       , n.is_publish isPublish
@@ -33,8 +35,6 @@
       novels n
     WHERE
       n.author_id = #{authorId}
-    AND
-      n.is_publish = #{isPublish}
   </select>
 
   <select id="selectNovelById" resultType="com.wordsassemblyapi.infrastructure.novel.dto.FindNovelData">
@@ -42,6 +42,7 @@
       n.id
       , n.author_id authorId
       , n.title
+      , n.category
       , n.digest
       , n.contents
       , n.is_publish isPublish
