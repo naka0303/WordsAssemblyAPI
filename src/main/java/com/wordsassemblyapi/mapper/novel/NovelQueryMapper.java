@@ -8,11 +8,13 @@ import java.util.List;
 @Mapper
 public interface NovelQueryMapper {
 
+  List<FindNovelData> selectNovels(
+      @Param("isPublish") String isPublish);
+
   List<FindNovelData> selectNovelsByAuthor(
       @Param("authorId") Integer authorId,
       @Param("isPublish") String isPublish);
 
   FindNovelData selectNovelById(
-      @Param("authorId") Integer authorId,
       @Param("novelId") Integer novelId);
 }

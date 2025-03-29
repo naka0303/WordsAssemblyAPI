@@ -16,4 +16,11 @@
       , #{dto.isPublish}
     )
   </insert>
+
+  <delete id="deleteNovelById">
+    DELETE FROM
+      novels
+    WHERE
+      id = #{novelId}
+  </delete>
 </mapper>

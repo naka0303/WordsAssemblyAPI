@@ -51,9 +51,27 @@ public class NovelController {
   }
 
   /**
+   * 全ての小説を取得.
+   * @param request 検索条件
+   */
+  @GetMapping("/v1/novels")
+  public ResponseEntity<Object> findNovels(
+      @ModelAttribute @Validated FindNovelRequest request,
+      Errors errors) throws Exception {
+
+    if (errors.hasErrors()) {
+      throw new Exception("Invalid Request");
+    }
+
+    List<Novel> novels = novelQueryService.findNovels(request);
+
+    return ResponseEntity.ok(novels);
+  }
+
+  /**
    * 指定された著者に紐づく小説を全取得.
    * @param authorId 著者ID
-   * @param request 投稿済み小説情報
+   * @param request 検索条件
    */
   @GetMapping("/v1/authors/{authorId}/novels")
   public ResponseEntity<Object> findNovelsByAuthor(
@@ -71,18 +89,29 @@ public class NovelController {
   }
 
   /**
-   * 指定されたIDの小説を取得.
-   * @param authorId 著者ID
+   * 指定された小説を取得.
    * @param novelId 小説ID
    */
-  @GetMapping("/v1/authors/{authorId}/novels/{novelId}")
+  @GetMapping("/v1/novels/{novelId}")
   public ResponseEntity<Object> findNovelsById(
-      @PathVariable Integer authorId,
       @PathVariable Integer novelId) {
 
-    Novel novel = novelQueryService.findNovelsById(authorId, novelId);
+    Novel novel = novelQueryService.findNovelsById(novelId);
 
     return ResponseEntity.ok(novel);
+  }
+
+  /**
+   * 指定された小説の削除
+   * @param novelId 小説ID
+   */
+  @DeleteMapping("/v1/novels/{novelId}")
+  public ResponseEntity<Object> deleteNovelById(
+      @PathVariable Integer novelId) throws Exception {
+
+    novelCommandService.deleteNovelById(novelId);
+
+    return ResponseEntity.status(HttpStatus.OK).body(Objects.class);
   }
 
 }

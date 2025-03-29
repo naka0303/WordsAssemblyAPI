@@ -19,6 +19,18 @@ public class NovelQueryService {
   }
 
   /**
+   * 全ての小説を取得.
+   * @param request 検索条件
+   * @return 小説エンティティリスト
+   */
+  public List<Novel> findNovels(FindNovelRequest request) {
+    List<FindNovelDto> dtoList = novelQueryRepository.findNovels(request);
+
+    FindNovelResource resource = new FindNovelResource();
+    return resource.toEntityList(dtoList);
+  }
+
+  /**
    * 指定された著者に紐づく小説を全取得.
    * @param authorId 著者ID
    * @param request 検索条件
@@ -33,12 +45,11 @@ public class NovelQueryService {
 
   /**
    * 指定されたIDの小説を取得.
-   * @param authorId 著者ID
    * @param novelId 小説ID
    * @return 小説エンティティ
    */
-  public Novel findNovelsById(Integer authorId, Integer novelId) {
-    FindNovelDto dto = novelQueryRepository.findNovelById(authorId, novelId);
+  public Novel findNovelsById(Integer novelId) {
+    FindNovelDto dto = novelQueryRepository.findNovelById(novelId);
 
     FindNovelResource resource = new FindNovelResource();
     return resource.toEntity(dto);

@@ -21,9 +21,32 @@ public class NovelQueryRepository {
   }
 
   /**
+   * 全ての小説を取得.
+   * @param request 検索条件
+   * @return 小説DTOリスト
+   */
+  public List<FindNovelDto> findNovels(FindNovelRequest request) {
+    List<FindNovelData> dataList =
+        novelQueryMapper.selectNovels(request.getIsPublish());
+
+    if (CollectionUtils.isEmpty(dataList)) {
+      return null;
+    }
+
+    List<FindNovelDto> dtoList = new ArrayList<>();
+    for (FindNovelData data : dataList) {
+      dtoList.add(new FindNovelDto(
+          data.getId(), data.getAuthorId(), data.getTitle(), data.getDigest(), data.getContents(),
+          data.getIsPublish(), data.getCreatedAt(), data.getUpdatedAt(), data.getDeletedAt()));
+    }
+    return dtoList;
+  }
+
+  /**
    * 指定された著者に紐づく小説を全取得.
    * @param authorId 著者ID
    * @param request 検索条件
+   * @return 小説DTOリスト
    */
   public List<FindNovelDto> findNovelsByAuthor(Integer authorId, FindNovelRequest request) {
     List<FindNovelData> dataList =
@@ -44,12 +67,11 @@ public class NovelQueryRepository {
 
   /**
    * 指定されたIDの小説を取得.
-   * @param authorId 著者ID
    * @param novelId 小説ID
-   * @return 小説エンティティ
+   * @return 小説DTO
    */
-  public FindNovelDto findNovelById(Integer authorId, Integer novelId) {
-    FindNovelData data = novelQueryMapper.selectNovelById(authorId, novelId);
+  public FindNovelDto findNovelById(Integer novelId) {
+    FindNovelData data = novelQueryMapper.selectNovelById(novelId);
 
     if (data == null) {
       return null;

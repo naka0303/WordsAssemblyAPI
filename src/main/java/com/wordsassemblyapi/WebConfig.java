@@ -22,9 +22,12 @@ public class WebConfig implements WebMvcConfigurer {
             .requestMatchers(HttpMethod.POST, "/v1/login").permitAll()
             .requestMatchers(HttpMethod.POST, "/v1/logout").permitAll()
             .requestMatchers(HttpMethod.POST, "/v1/authors").permitAll()
-            .requestMatchers(HttpMethod.POST, "/v1/novels").permitAll()
             .requestMatchers(HttpMethod.GET, "/v1/authors/{authorId}/novels").permitAll()
-            .requestMatchers(HttpMethod.GET, "/v1/authors/{authorId}/novels/{novelId}").permitAll()
+            .requestMatchers(HttpMethod.GET, "/v1/novels").permitAll()
+            .requestMatchers(HttpMethod.POST, "/v1/novels").permitAll()
+            .requestMatchers(HttpMethod.GET, "/v1/novels").permitAll()
+            .requestMatchers(HttpMethod.GET, "/v1/novels/{novelId}").permitAll()
+            .requestMatchers(HttpMethod.DELETE, "/v1/novels/{novelId}").permitAll()
             .anyRequest().authenticated());
 
     return http.build();

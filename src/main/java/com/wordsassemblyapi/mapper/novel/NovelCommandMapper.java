@@ -8,4 +8,7 @@ import org.apache.ibatis.annotations.Param;
 public interface NovelCommandMapper {
   int insertNovel(
       @Param("dto") RegisterNovelDto dto);
+
+  int deleteNovelById(
+      @Param("novelId") Integer novelId);
 }

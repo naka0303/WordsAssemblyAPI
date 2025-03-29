@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wordsassemblyapi.mapper.novel.NovelQueryMapper">
+  <select id="selectNovels" resultType="com.wordsassemblyapi.infrastructure.novel.dto.FindNovelData">
+    SELECT
+      n.id
+      , n.author_id authorId
+      , n.title
+      , n.digest
+      , n.contents
+      , n.is_publish isPublish
+      , n.created_at createdAt
+      , n.updated_at updatedAt
+      , n.deleted_at deletedAt
+    FROM
+      novels n
+    WHERE
+      n.is_publish = #{isPublish}
+  </select>
+
   <select id="selectNovelsByAuthor" resultType="com.wordsassemblyapi.infrastructure.novel.dto.FindNovelData">
     SELECT
       n.id
@@ -34,8 +51,6 @@
     FROM
       novels n
     WHERE
-      n.author_id = #{authorId}
-    AND
       n.id = #{novelId}
   </select>
 </mapper>

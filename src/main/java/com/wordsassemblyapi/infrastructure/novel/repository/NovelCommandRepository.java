@@ -20,9 +20,21 @@ public class NovelCommandRepository {
    * @throws Exception 例外処理
    */
   public void registerNovel(RegisterNovelDto dto) throws Exception {
-    int cnt = novelCommandMapper.insertNovel(dto);
+    final int cnt = novelCommandMapper.insertNovel(dto);
     if (cnt != 1) {
       throw new Exception("failed to insert novel");
+    }
+  }
+
+  /**
+   * 指定された小説の削除
+   * @param novelId 小説ID
+   * @throws Exception 例外処理
+   */
+  public void deleteNovelById(Integer novelId) throws Exception {
+    final int cnt = novelCommandMapper.deleteNovelById(novelId);
+    if (cnt != 1) {
+      throw new Exception("failed to delete novel by id");
     }
   }
 }
