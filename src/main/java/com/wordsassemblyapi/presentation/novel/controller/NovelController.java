@@ -5,6 +5,7 @@ import com.wordsassemblyapi.domain.novel.entity.Novel;
 import com.wordsassemblyapi.presentation.novel.dto.FindNovelRequest;
 import com.wordsassemblyapi.application.novel.service.NovelCommandService;
 import com.wordsassemblyapi.presentation.novel.dto.RegisterNovelRequest;
+import com.wordsassemblyapi.presentation.novel.dto.UpdateNovelRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -102,7 +103,27 @@ public class NovelController {
   }
 
   /**
-   * 指定された小説の削除
+   * 指定された小説の更新.
+   * @param novelId 小説ID
+   * @param request 更新情報
+   */
+  @PutMapping("/v1/novels/{novelId}")
+  public ResponseEntity<Object> updateNovelById(
+      @PathVariable Integer novelId,
+      @RequestBody @Validated UpdateNovelRequest request,
+      Errors errors) throws Exception {
+
+    if (errors.hasErrors()) {
+      throw new Exception("Invalid Request");
+    }
+
+    novelCommandService.updateNovelById(novelId, request);
+
+    return ResponseEntity.status(HttpStatus.OK).body(Objects.class);
+  }
+
+  /**
+   * 指定された小説の削除.
    * @param novelId 小説ID
    */
   @DeleteMapping("/v1/novels/{novelId}")

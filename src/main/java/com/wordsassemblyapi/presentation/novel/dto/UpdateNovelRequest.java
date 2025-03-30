@@ -7,8 +7,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class RegisterNovelRequest {
-  private Integer authorId;
+public class UpdateNovelRequest {
   private String title;
   private String category;
   private String digest;

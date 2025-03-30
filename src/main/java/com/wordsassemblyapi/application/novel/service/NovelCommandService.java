@@ -3,9 +3,11 @@ package com.wordsassemblyapi.application.novel.service;
 import com.wordsassemblyapi.domain.novel.enums.Category;
 import com.wordsassemblyapi.infrastructure.novel.dto.FindNovelDto;
 import com.wordsassemblyapi.infrastructure.novel.dto.RegisterNovelDto;
+import com.wordsassemblyapi.infrastructure.novel.dto.UpdateNovelDto;
 import com.wordsassemblyapi.infrastructure.novel.repository.NovelCommandRepository;
 import com.wordsassemblyapi.infrastructure.novel.repository.NovelQueryRepository;
 import com.wordsassemblyapi.presentation.novel.dto.RegisterNovelRequest;
+import com.wordsassemblyapi.presentation.novel.dto.UpdateNovelRequest;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -31,8 +33,8 @@ public class NovelCommandService {
 
     RegisterNovelDto dto = new RegisterNovelDto(
         request.getAuthorId(),
-        Category.getEnum(request.getCategory()),
         request.getTitle(),
+        Category.getEnum(request.getCategory()),
         request.getDigest(),
         request.getContents(),
         request.getIsPublish());
@@ -41,7 +43,28 @@ public class NovelCommandService {
   }
 
   /**
-   * 指定された小説の削除
+   * 指定された小説の更新.
+   * @param novelId 小説ID
+   * @param request 更新情報
+   */
+  public void updateNovelById(Integer novelId, UpdateNovelRequest request) throws Exception {
+    FindNovelDto findNovelDto = novelQueryRepository.findNovelById(novelId);
+    if (findNovelDto == null) {
+      throw new Exception("Specified.novel.not.found");
+    }
+
+    UpdateNovelDto updateNovelDto = new UpdateNovelDto(
+        request.getTitle(),
+        Category.getEnum(request.getCategory()),
+        request.getDigest(),
+        request.getContents(),
+        request.getIsPublish());
+
+    novelCommandRepository.updateNovelId(novelId, updateNovelDto);
+  }
+
+  /**
+   * 指定された小説の削除.
    * @param novelId 小説ID
    */
   public void deleteNovelById(Integer novelId) throws Exception {

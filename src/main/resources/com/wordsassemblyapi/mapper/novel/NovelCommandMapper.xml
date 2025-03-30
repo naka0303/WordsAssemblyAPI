@@ -19,6 +19,17 @@
     )
   </insert>
 
+  <update id="updateNovelById">
+    UPDATE novels SET
+      title = #{dto.title}
+      , category = #{dto.category}
+      , digest = #{dto.digest}
+      , contents = #{dto.contents}
+      , is_publish = #{dto.isPublish}
+    WHERE
+      id = #{novelId}
+  </update>
+
   <delete id="deleteNovelById">
     DELETE FROM
       novels

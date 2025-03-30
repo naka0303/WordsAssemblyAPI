@@ -4,12 +4,9 @@ import com.wordsassemblyapi.domain.novel.enums.Category;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Calendar;
-
 @Getter
 @Setter
-public class RegisterNovelDto {
-  private Integer authorId;
+public class UpdateNovelDto {
   private String title;
   private Category category;
   private String digest;
@@ -17,14 +14,12 @@ public class RegisterNovelDto {
   private String isPublish;
 
   /** コンストラクター */
-  public RegisterNovelDto(
-      Integer authorId,
+  public UpdateNovelDto(
       String title,
       Category category,
       String digest,
       String contents,
       String isPublish) {
-    this.authorId = authorId;
     this.title = title;
     this.category = category;
     this.digest = digest;

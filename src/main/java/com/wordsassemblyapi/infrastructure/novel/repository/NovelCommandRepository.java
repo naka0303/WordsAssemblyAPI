@@ -1,6 +1,7 @@
 package com.wordsassemblyapi.infrastructure.novel.repository;
 
 import com.wordsassemblyapi.infrastructure.novel.dto.RegisterNovelDto;
+import com.wordsassemblyapi.infrastructure.novel.dto.UpdateNovelDto;
 import com.wordsassemblyapi.mapper.novel.NovelCommandMapper;
 import org.springframework.stereotype.Repository;
 
@@ -23,6 +24,20 @@ public class NovelCommandRepository {
     final int cnt = novelCommandMapper.insertNovel(dto);
     if (cnt != 1) {
       throw new Exception("failed to insert novel");
+    }
+  }
+
+  /**
+   * 指定された小説の更新
+   * @param novelId 小説ID
+   * @param dto 更新DTO
+   * @throws Exception 例外処理
+   */
+  public void updateNovelId(Integer novelId, UpdateNovelDto dto) throws Exception {
+    final int cnt = novelCommandMapper.updateNovelById(
+        novelId, dto);
+    if (cnt != 1) {
+      throw new Exception("failed to update novel by id");
     }
   }
 
