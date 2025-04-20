@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wordsassemblyapi.mapper.approval.ApprovalQueryMapper">
+  <select id="selectApprovalsById" resultType="com.wordsassemblyapi.infrastructure.approval.dto.FindApprovalData">
+    SELECT
+      a.id
+      , a.novel_id novelId
+      , a.from_author_id fromAuthorId
+      , a.to_author_id toAuthorId
+      , a.created_at createdAt
+      , a.updated_at updatedAt
+      , a.deleted_at deletedAt
+    FROM
+      approvals a
+    WHERE
+      a.novel_id = #{novelId}
+  </select>
+</mapper>

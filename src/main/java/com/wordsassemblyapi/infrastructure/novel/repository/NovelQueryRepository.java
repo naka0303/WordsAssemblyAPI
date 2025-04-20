@@ -36,8 +36,9 @@ public class NovelQueryRepository {
     List<FindNovelDto> dtoList = new ArrayList<>();
     for (FindNovelData data : dataList) {
       dtoList.add(new FindNovelDto(
-          data.getId(), data.getAuthorId(), data.getTitle(), data.getCategory(), data.getDigest(),
-          data.getContents(), data.getIsPublish(), data.getCreatedAt(), data.getUpdatedAt(), data.getDeletedAt()));
+          data.getId(), data.getAuthorId(), data.getNickname(), data.getTitle(), data.getCategory(),
+          data.getDigest(), data.getContents(), data.getIsPublish(), data.getCreatedAt(),
+          data.getUpdatedAt(), data.getDeletedAt()));
     }
     return dtoList;
   }
@@ -59,8 +60,9 @@ public class NovelQueryRepository {
     List<FindNovelDto> dtoList = new ArrayList<>();
     for (FindNovelData data : dataList) {
       dtoList.add(new FindNovelDto(
-          data.getId(), data.getAuthorId(), data.getTitle(), data.getCategory(), data.getDigest(),
-          data.getContents(), data.getIsPublish(), data.getCreatedAt(), data.getUpdatedAt(), data.getDeletedAt()));
+          data.getId(), data.getAuthorId(), data.getNickname(), data.getTitle(), data.getCategory(),
+          data.getDigest(), data.getContents(), data.getIsPublish(), data.getCreatedAt(),
+          data.getUpdatedAt(), data.getDeletedAt()));
     }
     return dtoList;
   }
@@ -78,7 +80,8 @@ public class NovelQueryRepository {
     }
 
     return new FindNovelDto(
-        data.getId(), data.getAuthorId(), data.getTitle(), data.getCategory(), data.getDigest(),
-        data.getContents(), data.getIsPublish(), data.getCreatedAt(), data.getUpdatedAt(), data.getDeletedAt());
+        data.getId(), data.getAuthorId(), data.getNickname(), data.getTitle(), data.getCategory(),
+        data.getDigest(), data.getContents(), data.getIsPublish(), data.getCreatedAt(),
+        data.getUpdatedAt(), data.getDeletedAt());
   }
 }

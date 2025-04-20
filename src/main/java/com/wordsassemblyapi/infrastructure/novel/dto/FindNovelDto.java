@@ -1,9 +1,7 @@
 package com.wordsassemblyapi.infrastructure.novel.dto;
 
-import com.wordsassemblyapi.domain.novel.enums.Category;
 import lombok.Getter;
 import lombok.Setter;
-
 import java.time.LocalDateTime;
 
 @Getter
@@ -11,6 +9,7 @@ import java.time.LocalDateTime;
 public class FindNovelDto {
   private Integer id;
   private Integer authorId;
+  private String nickname;
   private String title;
   private String category;
   private String digest;
@@ -24,6 +23,7 @@ public class FindNovelDto {
   public FindNovelDto(
       Integer id,
       Integer authorId,
+      String nickname,
       String title,
       String category,
       String digest,
@@ -34,6 +34,7 @@ public class FindNovelDto {
       LocalDateTime deletedAt) {
     this.id = id;
     this.authorId = authorId;
+    this.nickname = nickname;
     this.title = title;
     this.category = category;
     this.digest = digest;

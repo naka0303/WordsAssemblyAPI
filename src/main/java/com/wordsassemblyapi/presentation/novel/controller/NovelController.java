@@ -1,9 +1,11 @@
 package com.wordsassemblyapi.presentation.novel.controller;
 
 import com.wordsassemblyapi.application.novel.service.NovelQueryService;
+import com.wordsassemblyapi.domain.approvals.entity.Approval;
 import com.wordsassemblyapi.domain.novel.entity.Novel;
 import com.wordsassemblyapi.presentation.novel.dto.FindNovelRequest;
 import com.wordsassemblyapi.application.novel.service.NovelCommandService;
+import com.wordsassemblyapi.presentation.novel.dto.RegisterApprovalRequest;
 import com.wordsassemblyapi.presentation.novel.dto.RegisterNovelRequest;
 import com.wordsassemblyapi.presentation.novel.dto.UpdateNovelRequest;
 import org.springframework.beans.factory.annotation.Autowired;

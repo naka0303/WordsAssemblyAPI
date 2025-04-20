@@ -1,6 +1,5 @@
 package com.wordsassemblyapi.domain.novel.entity;
 
-import com.wordsassemblyapi.domain.novel.enums.Category;
 import jakarta.persistence.*;
 import lombok.Getter;
 import java.time.LocalDateTime;
@@ -16,6 +15,9 @@ public class Novel {
 
   @Column(nullable = false)
   final private Integer authorId;
+
+  @Transient
+  final private String nickname;
 
   @Column(nullable = false, length = 50)
   final private String title;
@@ -45,6 +47,7 @@ public class Novel {
   public Novel(
       Integer id,
       Integer authorId,
+      String nickname,
       String title,
       String category,
       String digest,
@@ -55,6 +58,7 @@ public class Novel {
       LocalDateTime deletedAt) {
     this.id = id;
     this.authorId = authorId;
+    this.nickname = nickname;
     this.title = title;
     this.category = category;
     this.digest = digest;
