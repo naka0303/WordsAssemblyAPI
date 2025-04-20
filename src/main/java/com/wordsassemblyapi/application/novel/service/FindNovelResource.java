@@ -23,6 +23,7 @@ public class FindNovelResource {
       novels.add(new Novel(
           dto.getId(),
           dto.getAuthorId(),
+          dto.getNickname(),
           dto.getTitle(),
           dto.getCategory(),
           dto.getDigest(),
@@ -50,6 +51,7 @@ public class FindNovelResource {
     return new Novel(
         dto.getId(),
         dto.getAuthorId(),
+        dto.getNickname(),
         dto.getTitle(),
         dto.getCategory(),
         dto.getDigest(),

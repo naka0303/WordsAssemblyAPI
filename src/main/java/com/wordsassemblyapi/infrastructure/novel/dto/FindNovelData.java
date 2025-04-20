@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 public class FindNovelData {
   private Integer id;
   private Integer authorId;
+  private String nickname;
   private String title;
   private String category;
   private String digest;

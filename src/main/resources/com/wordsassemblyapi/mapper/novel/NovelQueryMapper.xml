@@ -5,6 +5,7 @@
     SELECT
       n.id
       , n.author_id authorId
+      , a.nickname
       , n.title
       , n.category
       , n.digest
@@ -15,6 +16,10 @@
       , n.deleted_at deletedAt
     FROM
       novels n
+    LEFT JOIN
+      authors a
+    ON
+      n.author_id = a.id
     WHERE
       n.is_publish = #{isPublish}
   </select>
@@ -23,6 +28,7 @@
     SELECT
       n.id
       , n.author_id authorId
+      , a.nickname
       , n.title
       , n.category
       , n.digest
@@ -33,6 +39,10 @@
       , n.deleted_at deletedAt
     FROM
       novels n
+    LEFT JOIN
+      authors a
+    ON
+      n.author_id = a.id
     WHERE
       n.author_id = #{authorId}
   </select>
@@ -41,6 +51,7 @@
     SELECT
       n.id
       , n.author_id authorId
+      , a.nickname
       , n.title
       , n.category
       , n.digest
@@ -51,6 +62,10 @@
       , n.deleted_at deletedAt
     FROM
       novels n
+    LEFT JOIN
+      authors a
+    ON
+      n.author_id = a.id
     WHERE
       n.id = #{novelId}
   </select>

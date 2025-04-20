@@ -29,6 +29,8 @@ public class WebConfig implements WebMvcConfigurer {
             .requestMatchers(HttpMethod.GET, "/v1/novels/{novelId}").permitAll()
             .requestMatchers(HttpMethod.PUT, "/v1/novels/{novelId}").permitAll()
             .requestMatchers(HttpMethod.DELETE, "/v1/novels/{novelId}").permitAll()
+            .requestMatchers(HttpMethod.POST, "/v1/novels/{novelId}/approval").permitAll()
+            .requestMatchers(HttpMethod.GET, "/v1/novels/{novelId}/approvals").permitAll()
             .anyRequest().authenticated());
 
     return http.build();
