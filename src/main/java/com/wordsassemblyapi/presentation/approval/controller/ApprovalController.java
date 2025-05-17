@@ -64,4 +64,19 @@ public class ApprovalController {
 
     return ResponseEntity.ok(approvals);
   }
+
+  /**
+   * 指定された小説の、指定された著者からのいいね！を削除.
+   * @param novelId 小説ID
+   * @param authorId 著者ID
+   */
+  @DeleteMapping("/v1/novels/{novelId}/approvals/{authorId}")
+  public ResponseEntity<Object> deleteApprovalByAuthor(
+      @PathVariable Integer novelId,
+      @PathVariable Integer authorId) throws Exception {
+
+    approvalCommandService.deleteApprovalByAuthor(novelId, authorId);
+
+    return ResponseEntity.status(HttpStatus.OK).body(Objects.class);
+  }
 }
