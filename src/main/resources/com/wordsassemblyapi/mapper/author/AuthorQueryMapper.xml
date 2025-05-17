@@ -20,4 +20,24 @@
     WHERE
       a.email = #{email}
   </select>
+
+  <select id="selectAuthorById" resultType="com.wordsassemblyapi.infrastructure.author.dto.FindAuthorData">
+    SELECT
+      a.id
+      , a.first_name firstName
+      , a.last_name lastName
+      , a.first_name_kana firstNameKana
+      , a.last_name_kana lastNameKana
+      , a.nickname
+      , a.age
+      , a.email
+      , a.password
+      , a.created_at createdAt
+      , a.updated_at updatedAt
+      , a.deleted_at deletedAt
+    FROM
+      authors a
+    WHERE
+      a.id = #{userId}
+  </select>
 </mapper>

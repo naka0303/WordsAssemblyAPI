@@ -13,4 +13,12 @@
     )
   </insert>
 
+  <delete id="deleteApprovalByAuthor">
+    DELETE FROM approvals
+    WHERE
+      novel_id = #{novelId}
+    AND
+      from_author_id = #{authorId}
+  </delete>
+
 </mapper>

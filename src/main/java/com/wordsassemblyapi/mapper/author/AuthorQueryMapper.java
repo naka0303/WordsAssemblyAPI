@@ -11,4 +11,7 @@ public interface AuthorQueryMapper {
 
   FindAuthorData selectAuthorByEmail(
       @Param("email") String email);
+
+  FindAuthorData selectAuthorById(
+      @Param("userId") Integer userId);
 }
