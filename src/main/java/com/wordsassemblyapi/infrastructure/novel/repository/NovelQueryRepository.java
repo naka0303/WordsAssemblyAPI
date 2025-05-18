@@ -26,8 +26,10 @@ public class NovelQueryRepository {
    * @return 小説DTOリスト
    */
   public List<FindNovelDto> findNovels(FindNovelRequest request) {
-    List<FindNovelData> dataList =
-        novelQueryMapper.selectNovels(request.getIsPublish());
+
+    final Category category = Category.getEnum(request.getCategory());
+    List<FindNovelData> dataList = novelQueryMapper.selectNovels(
+        request.getIsPublish(), request.getTitle(), category.name());
 
     if (CollectionUtils.isEmpty(dataList)) {
       return null;

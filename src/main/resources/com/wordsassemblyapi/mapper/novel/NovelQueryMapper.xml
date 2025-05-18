@@ -22,6 +22,16 @@
       n.author_id = a.id
     WHERE
       n.is_publish = #{isPublish}
+    <if test="title != null || title != ''">
+      AND
+        title LIKE CONCAT ('%', #{title}, '%')
+    </if>
+    <if test="category != null || category != ''">
+      <if test="category != 'ALL'">
+        AND
+          category = #{category}
+      </if>
+    </if>
   </select>
 
   <select id="selectNovelsByAuthor" resultType="com.wordsassemblyapi.infrastructure.novel.dto.FindNovelData">

@@ -9,7 +9,9 @@ import java.util.List;
 public interface NovelQueryMapper {
 
   List<FindNovelData> selectNovels(
-      @Param("isPublish") String isPublish);
+      @Param("isPublish") String isPublish,
+      @Param("title") String title,
+      @Param("category") String category);
 
   List<FindNovelData> selectNovelsByAuthor(
       @Param("authorId") Integer authorId);

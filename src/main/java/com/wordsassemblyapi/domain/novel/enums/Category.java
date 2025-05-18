@@ -3,6 +3,7 @@ package com.wordsassemblyapi.domain.novel.enums;
 import java.util.Objects;
 
 public enum Category {
+  ALL("all"),
   MISTERY("mistery"),
   LOVESTORY("lovestory"),
   SF("sf"),
