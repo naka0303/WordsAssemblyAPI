@@ -2,7 +2,6 @@ package com.wordsassemblyapi.domain.author.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
-
 import java.time.LocalDateTime;
 
 @Getter
@@ -39,6 +38,9 @@ public class Author {
   final private String password;
 
   @Column
+  final private String selfIntroduction;
+
+  @Column
   final private LocalDateTime createdAt;
 
   @Column
@@ -58,6 +60,7 @@ public class Author {
       Integer age,
       String email,
       String password,
+      String selfIntroduction,
       LocalDateTime createdAt,
       LocalDateTime updatedAt,
       LocalDateTime deletedAt) {
@@ -70,6 +73,7 @@ public class Author {
     this.age = age;
     this.email = email;
     this.password = password;
+    this.selfIntroduction = selfIntroduction;
     this.createdAt = createdAt;
     this.updatedAt = updatedAt;
     this.deletedAt = deletedAt;

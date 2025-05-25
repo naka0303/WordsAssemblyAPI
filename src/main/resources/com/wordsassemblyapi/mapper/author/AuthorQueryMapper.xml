@@ -11,7 +11,7 @@
       , a.nickname
       , a.age
       , a.email
-      , a.password
+      , a.self_introduction selfIntroduction
       , a.created_at createdAt
       , a.updated_at updatedAt
       , a.deleted_at deletedAt
@@ -31,13 +31,22 @@
       , a.nickname
       , a.age
       , a.email
-      , a.password
+      , a.self_introduction selfIntroduction
       , a.created_at createdAt
       , a.updated_at updatedAt
       , a.deleted_at deletedAt
     FROM
       authors a
     WHERE
-      a.id = #{userId}
+      a.id = #{authorId}
+  </select>
+
+  <select id="selectPasswordByAuthor" resultType="String">
+    SELECT
+      a.password
+    FROM
+      authors a
+    WHERE
+      a.id = #{authorId}
   </select>
 </mapper>

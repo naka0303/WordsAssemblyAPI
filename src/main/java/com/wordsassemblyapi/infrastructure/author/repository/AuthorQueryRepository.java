@@ -2,8 +2,6 @@ package com.wordsassemblyapi.infrastructure.author.repository;
 
 import com.wordsassemblyapi.infrastructure.author.dto.FindAuthorData;
 import com.wordsassemblyapi.infrastructure.author.dto.FindAuthorDto;
-import com.wordsassemblyapi.infrastructure.author.dto.RegisterAuthorDto;
-import com.wordsassemblyapi.mapper.author.AuthorCommandMapper;
 import com.wordsassemblyapi.mapper.author.AuthorQueryMapper;
 import org.springframework.stereotype.Repository;
 
@@ -29,25 +27,36 @@ public class AuthorQueryRepository {
       return null;
     }
 
-    return new FindAuthorDto(data.getId(), data.getFirstName(), data.getLastName(), data.getFirstNameKana(),
-        data.getLastNameKana(), data.getNickname(), data.getAge(), data.getEmail(), data.getPassword(),
-        data.getCreatedAt(), data.getUpdatedAt(), data.getDeletedAt());
+    return new FindAuthorDto(data.getId(), data.getFirstName(), data.getLastName(),
+        data.getFirstNameKana(), data.getLastNameKana(), data.getNickname(), data.getAge(),
+        data.getEmail(), data.getSelfIntroduction(), data.getCreatedAt(), data.getUpdatedAt(),
+        data.getDeletedAt());
   }
 
   /**
    * 指定IDの著者の詳細情報取得.
-   * @param userId ユーザーID
+   * @param authorId 著者ID
    * @return 著者情報
    */
-  public FindAuthorDto findAuthorById(Integer userId) {
-    FindAuthorData data = authorQueryMapper.selectAuthorById(userId);
+  public FindAuthorDto findAuthorById(Integer authorId) {
+    FindAuthorData data = authorQueryMapper.selectAuthorById(authorId);
 
     if (data == null) {
       return null;
     }
 
-    return new FindAuthorDto(data.getId(), data.getFirstName(), data.getLastName(), data.getFirstNameKana(),
-        data.getLastNameKana(), data.getNickname(), data.getAge(), data.getEmail(), data.getPassword(),
-        data.getCreatedAt(), data.getUpdatedAt(), data.getDeletedAt());
+    return new FindAuthorDto(data.getId(), data.getFirstName(), data.getLastName(),
+        data.getFirstNameKana(), data.getLastNameKana(), data.getNickname(), data.getAge(),
+        data.getEmail(), data.getSelfIntroduction(), data.getCreatedAt(), data.getUpdatedAt(),
+        data.getDeletedAt());
+  }
+
+  /**
+   * 指定された著者のパスワード情報を取得.
+   * @param authorId 著者ID
+   * @return パスワード
+   */
+  public String findPasswordById(Integer authorId) {
+    return authorQueryMapper.selectPasswordByAuthor(authorId);
   }
 }

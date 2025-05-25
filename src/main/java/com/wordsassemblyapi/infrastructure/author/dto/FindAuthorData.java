@@ -2,7 +2,6 @@ package com.wordsassemblyapi.infrastructure.author.dto;
 
 import lombok.Getter;
 import lombok.Setter;
-
 import java.time.LocalDateTime;
 
 @Getter
@@ -16,7 +15,7 @@ public class FindAuthorData {
   private String nickname;
   private Integer age;
   private String email;
-  private String password;
+  private String selfIntroduction;
   private LocalDateTime createdAt;
   private LocalDateTime updatedAt;
   private LocalDateTime deletedAt;

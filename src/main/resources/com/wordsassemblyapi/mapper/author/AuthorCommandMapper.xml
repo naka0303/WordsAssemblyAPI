@@ -22,4 +22,18 @@
       , #{dto.password}
     )
   </insert>
+
+  <update id="updateAuthorById">
+    UPDATE authors
+    SET
+      first_name = #{dto.firstName}
+      , last_name = #{dto.lastName}
+      , first_name_kana = #{dto.firstNameKana}
+      , last_name_kana = #{dto.lastNameKana}
+      , nickname = #{dto.nickname}
+      , age = #{dto.age}
+      , self_introduction = #{dto.selfIntroduction}
+    WHERE
+      id = #{authorId}
+  </update>
 </mapper>

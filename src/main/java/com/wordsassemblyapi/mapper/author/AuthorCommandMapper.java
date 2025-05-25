@@ -1,6 +1,7 @@
 package com.wordsassemblyapi.mapper.author;
 
 import com.wordsassemblyapi.infrastructure.author.dto.RegisterAuthorDto;
+import com.wordsassemblyapi.infrastructure.author.dto.UpdateAuthorDto;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -8,4 +9,8 @@ import org.apache.ibatis.annotations.Param;
 public interface AuthorCommandMapper {
   int insertAuthor(
       @Param("dto") RegisterAuthorDto dto);
+
+  int updateAuthorById(
+      @Param("authorId") Integer authorId,
+      @Param("dto") UpdateAuthorDto dto);
 }

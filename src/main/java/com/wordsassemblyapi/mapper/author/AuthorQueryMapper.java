@@ -13,5 +13,8 @@ public interface AuthorQueryMapper {
       @Param("email") String email);
 
   FindAuthorData selectAuthorById(
-      @Param("userId") Integer userId);
+      @Param("authorId") Integer authorId);
+
+  String selectPasswordByAuthor(
+      @Param("authorId") Integer authorId);
 }

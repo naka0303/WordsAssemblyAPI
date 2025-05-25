@@ -8,9 +8,10 @@ public class FindAuthorResource {
   /**
    * DTO -> Entity変換.
    * @param dto 著者DTO
+   * @param password パスワード
    * @return 著者エンティティ
    */
-  public Author toEntity(FindAuthorDto dto) {
+  public Author toEntity(FindAuthorDto dto, String password) {
     if (dto == null) {
       return null;
     }
@@ -24,7 +25,8 @@ public class FindAuthorResource {
         dto.getNickname(),
         dto.getAge(),
         dto.getEmail(),
-        dto.getPassword(),
+        password,
+        dto.getSelfIntroduction(),
         dto.getCreatedAt(),
         dto.getUpdatedAt(),
         dto.getDeletedAt()

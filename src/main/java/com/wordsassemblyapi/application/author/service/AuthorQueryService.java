@@ -18,15 +18,33 @@ public class AuthorQueryService {
   }
 
   /**
-   * 著者の詳細情報取得.
-   *
+   * 指定メールアドレスでの著者の詳細情報取得.
    * @param email メールアドレス
    * @return 著者情報
    */
   public Author findAuthorByEmail(String email) {
     FindAuthorDto dto = authorQueryRepository.findAuthorByEmail(email);
+    if (dto == null) {
+      return null;
+    }
+
+    final String password = authorQueryRepository.findPasswordById(dto.getId());
 
     FindAuthorResource resource = new FindAuthorResource();
-    return resource.toEntity(dto);
+    return resource.toEntity(dto, password);
+  }
+
+  /**
+   * 指定IDでの著者の詳細情報取得.
+   * @param authorId 著者ID
+   * @return 著者情報
+   */
+  public Author findAuthorById(Integer authorId) {
+    FindAuthorDto dto = authorQueryRepository.findAuthorById(authorId);
+
+    final String password = authorQueryRepository.findPasswordById(dto.getId());
+
+    FindAuthorResource resource = new FindAuthorResource();
+    return resource.toEntity(dto, password);
   }
 }
